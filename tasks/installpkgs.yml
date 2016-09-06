@@ -1,0 +1,12 @@
+- name: Upgrade pkgs
+  apt:
+    update_cache=yes
+    upgrade=dist
+
+- name: Install {{suite}} packages
+  apt:
+    name={{ item }}
+    state=latest
+  with_items:
+    - "{{ pkgs }}"
+

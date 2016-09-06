@@ -5,21 +5,11 @@ load("samtools"
     ,"tophat"
     ,"cufflinks"
 
-    ,"picard"
     ,"blast"
     ,"blat"
-    ,"BWA"
-    ,"STAR"
-    ,"SPAdes"
+    ,"bwa"
 
-    ,"igv"
-    ,"igvtools"
-    ,"gatk"
     ,"bedops"
 
     ,"bowtie2"
-
-    ,"parallel"
-
-    ,"java"
     )

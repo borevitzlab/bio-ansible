@@ -20,7 +20,7 @@
 - name: BWA module definition
   template: 
     src: templates/sw-module.lua.j2 
-    dest: "{{ modules_dir }}/bio/BWA/0.7.12.lua"
+    dest: "{{ modules_dir }}/bio/bwa/0.7.12.lua"
     owner: root 
     mode: 0644
   with_items:

@@ -1,0 +1,10 @@
+- name: make users
+  user: name={{item}} state=present generate_ssh_key=yes groups=users
+  with_items:
+    - "{{users}}"
+
+- name: make admins
+  user: name={{item}} state=present groups=sudo,adm,users
+  with_items:
+    - "{{admin_users}}"
+
