@@ -1,4 +1,3 @@
-
 - name: Clone vcftools
   git:
       repo: "https://github.com/vcftools/vcftools.git"
