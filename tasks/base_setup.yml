@@ -2,4 +2,6 @@
   shell: postconf -e 'myhostname = {{ansible_fqdn}}' && postfix reload
 
 - name: Disable root logins
-  shell: rm -f /root/.ssh/authorized_keys
+  file:
+    dest: /root/.ssh/authorized_keys
+    state: absent
