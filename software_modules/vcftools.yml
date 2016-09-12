@@ -1,18 +1,16 @@
 
-- name: Download vcftools
-  get_url:
-    url=http://downloads.sourceforge.net/project/vcftools/vcftools_{{version}}.tar.gz
-    dest={{source_dir}}/vcftools_{{version}}.tar.gz
-
-- name: Uncompress vcftools
-  unarchive: 
-    src: "{{ source_dir }}/vcftools_{{version}}.tar.gz"
-    dest: "{{ source_dir }}"
-    copy: no
-    creates: "{{ source_dir }}//vcftools_{{version}}/README.txt"
+- name: Clone vcftools
+  git:
+      repo: "https://github.com/vcftools/vcftools.git"
+      dest: "{{source_dir}}/vcftools_git"
+      update: yes
+      version: "{{version}}"
 
 - name: Build and Install vcftools
-  shell: cd {{ source_dir }}/vcftools_{{version}}; make install PREFIX="{{ soft_dir }}/vcftools_{{version}}"
+  shell: >
+      cd {{ source_dir }}/vcftools_git && ./autogen.sh && 
+      ./configure --prefix="{{ soft_dir }}/vcftools_{{version}}" &&
+      make && make install
   args:
     creates: "{{ soft_dir }}/vcftools_{{version}}/bin/vcftools"
 

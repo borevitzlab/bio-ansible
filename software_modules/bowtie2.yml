@@ -1,19 +1,19 @@
 - name: Download Bowtie2
   get_url:
-    url=http://sourceforge.net/projects/bowtie-bio/files/bowtie2/{{version}}/bowtie2-{{version}}-linux-x86_64.zip
-    dest={{source_dir}}/bowtie2-{{version}}-linux-x86_64.zip
+    url=https://github.com/BenLangmead/bowtie2/archive/v{{version}}.tar.gz
+    dest={{source_dir}}/bowtie2-{{version}}.tar.gz
 
 - name: Uncompress Bowtie2
   unarchive: 
-    src={{ source_dir }}/bowtie2-{{version}}-linux-x86_64.zip
-    dest={{ soft_dir }}
-    copy=no
-    mode=0644
-    creates={{ soft_dir}}/bowtie2-{{version}}/bowtie2
+    src: "{{ source_dir }}/bowtie2-{{version}}.tar.gz"
+    dest: "{{ source_dir }}"
+    copy: "no"
+    creates: "{{ source_dir }}/bowtie2-{{version}}/README"
 
-# Fix file permissions
-- file: dest="{{ soft_dir}}/bowtie2-{{version}}" mode=0755
-- shell: find {{ soft_dir }}/bowtie2-{{version}} -type d -exec chmod 0755 {} \; ; find {{ soft_dir }}/bowtie2-{{version}} -type f -exec chmod 0644 {} \; ; chmod 0755 {{ soft_dir }}/bowtie2-{{version}}/bowtie2*
+- name: Build and Install Bowtie2
+  shell: cd {{ source_dir }}/bowtie2-{{version}}; make install prefix="{{ soft_dir }}/bowtie2-{{version}}"
+  args:
+    creates: "{{ soft_dir }}/bowtie2-{{version}}/bin/bowtie2"
 
 - file: dest="{{modules_dir}}/bio/bowtie2" state=directory mode=0755
 
@@ -24,6 +24,6 @@
     owner: root 
     mode: 0644
   with_items:
-    - { help_text: 'Bowtie 2 is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequences', dir: 'bowtie2-{{version}}', skip_bin: true}
+    - { help_text: 'Bowtie 2 is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequences', dir: 'bowtie2-{{version}}'}
 
 

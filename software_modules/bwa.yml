@@ -9,13 +9,12 @@
     dest={{ source_dir }}
     copy=no
 
-- file: dest="{{modules_dir}}/bio/bwa" state=directory mode=0755
-
 - name: Build and Install BWA
   shell: cd {{ source_dir }}/bwa-{{version}}; make && mkdir -p "{{ soft_dir }}/BWA-{{version}}/bin" && cp bwa "{{ soft_dir }}/BWA-{{version}}/bin"
   args:
     creates: "{{ soft_dir }}/BWA-{{version}}/bin/bwa"
 
+- file: dest="{{modules_dir}}/bio/bwa" state=directory mode=0755
 
 - name: BWA module definition
   template:
