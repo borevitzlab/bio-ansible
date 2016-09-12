@@ -1,0 +1,11 @@
+- name: Set up firewall
+  ufw: rule={{item.state}} port={{item.port}} proto={{item.proto}}
+  with_items:
+    - {port: 22, proto: tcp, state: allow}
+    - {port: 80, proto: tcp, state: allow}
+    - {port: 443, proto: tcp, state: allow}
+
+- name: Enable Firewall
+  ufw:
+    state: enabled
+    policy: reject

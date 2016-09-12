@@ -1,10 +1,18 @@
-- name: make users
-  user: name={{item}} state=present generate_ssh_key=yes groups=users
+- name: Make users
+  user:
+    name: "{{item.name}}"
+    state: present
+    generate_ssh_key: yes
+    groups: "{{','.join(item.groups)}}"
   with_items:
     - "{{users}}"
 
-- name: make admins
-  user: name={{item}} state=present groups=sudo,adm,users
-  with_items:
-    - "{{admin_users}}"
-
+- name: Add ssh public key
+  authorized_key:
+    user: "{{item.0.name}}"
+    key: "{{lookup('file', 'keys/' + item.1)}}"
+  register: keyfiles
+  with_subelements:
+    - "{{users}}"
+    - keys
+    - {skip_missing: True}

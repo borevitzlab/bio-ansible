@@ -1,6 +1,21 @@
+- name: Add apt sources
+  apt_repository: repo={{item}} state=present
+  with_items:
+    - "{{apt_sources}}"
+
+- name: Add CRAN apt key
+  apt_key: keyserver=keyserver.ubuntu.com id=E298A3A825C0D65DFD57CBB651716619E084DAB9
+
+- name: Set up apt updates
+  lineinfile:
+    line: "{{item}}"
+    state: present
+    insertafter: EOF
+    dest: /etc/apt/apt.conf.d/50unattended-upgrades
+  with_items:
+    - 'Unattended-Upgrade::Origins-Pattern {"origin=*";};'
+
 - name: Upgrade pkgs
   apt:
     update_cache=yes
     upgrade=dist
-
-

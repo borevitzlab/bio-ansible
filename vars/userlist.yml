@@ -1,0 +1,12 @@
+users:
+  - {name: borevitz, groups: [users,], keys: []}
+  - {name: diep, groups: [users], keys: ["diep.pub"]}
+  - {name: gareth, groups: [sudo, adm, users], keys: []}
+  - {name: kevin, groups: [sudo, adm, users], keys: ["kevin.pub"]}
+  - {name: lt, groups: [users], keys: []}
+  - {name: megan, groups: [users], keys: []}
+  - {name: mohammad, groups: [users], keys: []}
+  - {name: pete, groups: [sudo, adm, users], keys: []}
+  - {name: steve, groups: [sudo, adm, users], keys: []}
+  - {name: stnamin, groups: [sudo, adm, users], keys: []}
+  - {name: zara, groups: [users], keys: []}

@@ -1,0 +1,7 @@
+packages_bioinf:
+  - mpi-default-bin
+  - r-base-core
+  - texlive-xetex
+  - texlive-latex-extra
+  - texlive-latex-recommended
+  - texlive-fonts-recommended

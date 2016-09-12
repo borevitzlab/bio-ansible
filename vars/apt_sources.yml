@@ -1,0 +1,10 @@
+apt_sources:
+  - "deb http://nova.clouds.archive.ubuntu.com/ubuntu/ xenial main"
+  - "deb http://nova.clouds.archive.ubuntu.com/ubuntu/ xenial-updates main"
+  - "deb http://nova.clouds.archive.ubuntu.com/ubuntu/ xenial universe"
+  - "deb http://nova.clouds.archive.ubuntu.com/ubuntu/ xenial-updates universe"
+  - "deb http://nova.clouds.archive.ubuntu.com/ubuntu/ xenial multiverse"
+  - "deb http://nova.clouds.archive.ubuntu.com/ubuntu/ xenial-updates multiverse"
+  - "deb http://nova.clouds.archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse"
+  - "deb http://cran.csiro.au/bin/linux/ubuntu xenial/"
+
