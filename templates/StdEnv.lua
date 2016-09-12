@@ -1,15 +1,8 @@
-load("samtools"
-    ,"vcftools"
+load("htslib"
     ,"bcftools"
+    ,"vcftools"
 
-    ,"tophat"
-    ,"cufflinks"
-
-    ,"blast"
-    ,"blat"
     ,"bwa"
-
-    ,"bedops"
 
     ,"bowtie2"
     )
