@@ -1,1 +1,5 @@
-- name: Mail server setup
+- name: Set mail server name
+  shell: postconf -e 'myhostname = {{ansible_fqdn}}' && postfix reload
+
+- name: Disable root logins
+  shell: rm -f /root/.ssh/authorized_keys
