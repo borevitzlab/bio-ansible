@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: edmund2
 
   vars_files:
     - vars/apt_sources.yml
