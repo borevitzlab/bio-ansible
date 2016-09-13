@@ -3,6 +3,7 @@
     name: "{{item.name}}"
     state: present
     generate_ssh_key: yes
+    shell: "{{item.shell}}"
     groups: "{{','.join(item.groups)}}"
   with_items:
     - "{{users}}"

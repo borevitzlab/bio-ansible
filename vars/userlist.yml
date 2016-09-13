@@ -2,13 +2,14 @@ users:
   - {name: borevitz,    shell: /bin/bash, groups: [users],                keys: []}
   - {name: diep,        shell: /bin/bash, groups: [users],                keys: [diep.pub]}
   - {name: gareth,      shell: /bin/zsh,  groups: [sudo, adm, users],     keys: [gareth.pub]}
+  - {name: jjanes,      shell: /bin/bash, groups: [users],                keys: [jjanes.pub]}
   - {name: kevin,       shell: /bin/zsh,  groups: [sudo, adm, users],     keys: [kevin.pub]}
   - {name: lt,          shell: /bin/bash, groups: [users],                keys: [lt.pub, kevin.pub]}
   - {name: megan,       shell: /bin/bash, groups: [users],                keys: [megan.pub]}
   - {name: mohammad,    shell: /bin/bash, groups: [users],                keys: []}
-  - {name: pete,        shell: /bin/bash, groups: [sudo, adm, users],     keys: []}
+  - {name: norman,      shell: /bin/bash, groups: [users],                keys: [norman.pub]}
+  - {name: pete,        shell: /bin/bash, groups: [sudo, adm, users],     keys: [pete.pub]}
+  - {name: pip,         shell: /bin/bash, groups: [users],                keys: []}
   - {name: steve,       shell: /bin/bash, groups: [sudo, adm, users],     keys: [steve.pub]}
   - {name: stnamin,     shell: /bin/bash, groups: [sudo, adm, users],     keys: [stnamin.pub]}
   - {name: zara,        shell: /bin/bash, groups: [users],                keys: []}
-  - {name: jjanes,      shell: /bin/bash, groups: [users],                keys: [jjanes.pub]}
-  - {name: norman,      shell: /bin/bash, groups: [users],                keys: [norman.pub]}
