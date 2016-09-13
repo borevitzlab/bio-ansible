@@ -1,5 +1,9 @@
 - name: Set mail server name
-  shell: postconf -e 'myhostname = {{ansible_fqdn}}' && postfix reload
+  lineinfile:
+    line: "myhostname = {{ansible_fqdn}}"
+    regexp: "^myhostname"
+    state: present
+    dest: /etc/postfix/main.cf
 
 - name: Disable root logins
   file:
