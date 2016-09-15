@@ -1,9 +1,17 @@
 - name: Set mail server name
   lineinfile:
-    line: "myhostname = {{ansible_fqdn}}"
-    regexp: "^myhostname"
+    line: "{{item.line}}"
+    regexp: "{{item.regexp}}"
     state: present
     dest: /etc/postfix/main.cf
+  with_items:
+    - {line: "myhostname = {{inventory_hostname}}", regexp: "^myhostname"}
+    - {line: "myorigin = {{inventory_hostname}}", regexp: "^#?myorigin"}
+
+- name: Reload postfix
+  service:
+    name: postfix
+    state: restarted
 
 - name: Disable root logins
   file:

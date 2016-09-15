@@ -5,3 +5,8 @@ packages_bioinf:
   - texlive-latex-extra
   - texlive-latex-recommended
   - texlive-fonts-recommended
+  - fastqc
+  - fastx-toolkit
+  - sra-toolkit
+  - stacks
+  - subread

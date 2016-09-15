@@ -2,10 +2,10 @@ packages_base:
   - apache2
   - curl
   - default-jre-headless
-  - ghostscript
   - emacs
   - etckeeper
   - fail2ban
+  - ghostscript
   - git
   - glances
   - gnupg
@@ -20,6 +20,7 @@ packages_base:
   - mailutils
   - mutt
   - nano
+  - ncdu
   - nodejs-legacy
   - npm
   - parallel
