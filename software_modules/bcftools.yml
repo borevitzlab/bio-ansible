@@ -12,7 +12,7 @@
     creates: "{{ source_dir }}/bcftools-{{version}}/README"
 
 - name: Build and Install bcftools
-  shell: cd {{ source_dir }}/bcftools-{{version}}; make install prefix="{{ soft_dir }}/bcftools-{{version}}"
+  shell: cd {{ source_dir }}/bcftools-{{version}}; make all install prefix="{{ soft_dir }}/bcftools-{{version}}"
   args:
     creates: "{{ soft_dir }}/bcftools-{{version}}/bin/bcftools"
 

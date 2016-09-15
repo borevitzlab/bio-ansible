@@ -7,4 +7,6 @@ apt_sources:
   - "deb http://nova.clouds.archive.ubuntu.com/ubuntu/ xenial-updates multiverse"
   - "deb http://nova.clouds.archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse"
   - "deb http://cran.csiro.au/bin/linux/ubuntu xenial/"
+  - "ppa:staticfloat/julia-deps"
+  - "ppa:staticfloat/juliareleases"
 

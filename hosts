@@ -1,1 +1,1 @@
-edmund2.anu.edu.au   ansible_host=130.56.244.174 ansible_user=kevin ansible_become=yes
+edmund.anu.edu.au   ansible_host=130.56.244.174 ansible_user=ubuntu ansible_become=yes

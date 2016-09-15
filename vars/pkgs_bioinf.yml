@@ -1,12 +1,23 @@
 packages_bioinf:
-  - mpi-default-bin
-  - r-base-core
-  - texlive-xetex
-  - texlive-latex-extra
-  - texlive-latex-recommended
-  - texlive-fonts-recommended
   - fastqc
   - fastx-toolkit
+  - julia
+  - mafft
+  - minia
+  - mpi-default-bin
+  - mummer
+  - muscle
+  - plast
+  - python-opencv
+  - r-base-core
+  - scythe
+  - seq-gen
+  - seqtk
+  - sickle
   - sra-toolkit
   - stacks
   - subread
+  - texlive-fonts-recommended
+  - texlive-latex-extra
+  - texlive-latex-recommended
+  - texlive-xetex

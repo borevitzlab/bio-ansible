@@ -1,3 +1,22 @@
+- name: Generate locales
+  locale_gen:
+      name: "{{item}}"
+  with_items:
+    - en_AU.UTF-8
+
+- name: Passwordless Sudo
+  lineinfile:
+    line: "%sudo ALL=(ALL) NOPASSWD: ALL"
+    regexp: "^%sudo"
+    state: present
+    dest: /etc/sudoers
+    validate: "visudo -cf %s"
+
+- name: Disable root logins
+  file:
+    dest: /root/.ssh/authorized_keys
+    state: absent
+
 - name: Set mail server name
   lineinfile:
     line: "{{item.line}}"
@@ -7,13 +26,11 @@
   with_items:
     - {line: "myhostname = {{inventory_hostname}}", regexp: "^myhostname"}
     - {line: "myorigin = {{inventory_hostname}}", regexp: "^#?myorigin"}
+  register: postfix_update
 
 - name: Reload postfix
   service:
     name: postfix
     state: restarted
-
-- name: Disable root logins
-  file:
-    dest: /root/.ssh/authorized_keys
-    state: absent
+  when:
+    - postfix_update.changed

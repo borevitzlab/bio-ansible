@@ -1,4 +1,4 @@
-- hosts: edmund2.anu.edu.au
+- hosts: edmund.anu.edu.au
 
   vars_files:
     - vars/apt_sources.yml

@@ -15,7 +15,9 @@ packages_dev:
   - liblzma-dev
   - libncurses5-dev
   - libopenblas-dev
+  - libopencv-dev
   - libpango1.0-dev
+  - libqes-dev
   - libsqlite3-dev
   - libssl-dev
   - libyaml-cpp-dev
