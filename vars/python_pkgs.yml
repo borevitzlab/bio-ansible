@@ -1,5 +1,6 @@
 python_pkgs:
   - {name: biopython,     pythons: [2, 3]}
+  - {name: docopt,        pythons: [2, 3]}
   - {name: jupyter,       pythons: [   3]}
   - {name: notebook,      pythons: [   3]}
   - {name: khmer,         pythons: [   3]}
@@ -13,4 +14,4 @@ python_pkgs:
   - {name: scipy,         pythons: [2, 3]}
   - {name: snakemake,     pythons: [   3]}
   - {name: tables,        pythons: [2, 3]}
-
+  - {name: virtualenvwrapper, pythons: [2, 3]}

@@ -1,0 +1,31 @@
+- name: Download bedtools
+  get_url:
+    url=https://github.com/arq5x/bedtools2/archive/v{{version}}.tar.gz
+    dest={{source_dir}}/bedtools-{{version}}.tar.gz
+
+- name: Uncompress bedtools
+  unarchive: 
+    src: "{{ source_dir }}/bedtools-{{version}}.tar.gz"
+    dest: "{{ source_dir }}"
+    copy: "no"
+    creates: "{{ source_dir }}/bedtools2-{{version}}/README"
+
+- name: Build and Install bedtools
+  shell: cd {{ source_dir }}/bedtools2-{{version}}; make install prefix="{{ soft_dir }}/bedtools-{{version}}"
+  args:
+    creates: "{{ soft_dir }}/bedtools2-{{version}}/bin/bedtools"
+
+- file: dest="{{modules_dir}}/bio/bedtools" state=directory mode=0755
+
+- name: bedtools module definition
+  template: 
+    src: templates/sw-module.lua.j2 
+    dest: "{{ modules_dir }}/bio/bedtools/{{version}}.lua"
+    owner: root 
+    mode: 0644
+  with_items:
+    - { help_text: 'Bed file utility',
+        dir: 'bedtools-{{version}}'}
+
+
+

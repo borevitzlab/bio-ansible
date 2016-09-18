@@ -1,3 +1,16 @@
+- name: Set hostname
+  hostname: name="{{inventory_hostname}}"
+
+- name: Set hosts
+  blockinfile:
+      state: present
+      dest: /etc/hosts
+      block: >
+        127.0.0.1 localhost
+        127.0.0.1 {{inventory_hostname}}
+        127.0.0.1 {{inventory_hostname_short}}
+
+
 - name: Generate locales
   locale_gen:
       name: "{{item}}"

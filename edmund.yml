@@ -35,3 +35,4 @@
     - include: software_modules/bowtie2.yml tags=bowtie2 version=2.2.9
     - include: software_modules/bowtie.yml tags=bowtie version=1.1.2
     - include: software_modules/vcftools.yml tags=vcftools version=master
+    - include: software_modules/bedtools.yml tags=bedtools version=2.26.0

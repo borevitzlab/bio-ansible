@@ -21,3 +21,4 @@ packages_bioinf:
   - texlive-latex-extra
   - texlive-latex-recommended
   - texlive-xetex
+  - trimmomatic
