@@ -3,3 +3,12 @@
   with_subelements:
     - "{{modules}}"
     - pythons
+
+- name: Load virutalenvwrapper in bash shells
+  lineinfile:
+    state: present
+    line: "{{item}}"
+    dest: /etc/bash.bashrc
+  with_items:
+    - "export VIRTUALENVWRAPPER_PYTHON=$(which python3)"
+    - ". /usr/local/bin/virtualenvwrapper_lazy.sh"
