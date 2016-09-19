@@ -2,7 +2,7 @@ users:
   - {name: borevitz,    shell: /bin/bash, groups: [users],                keys: []}
   - {name: brf,         shell: /bin/bash, groups: [users],                keys: [maxim-brf.pub]}
   - {name: diep,        shell: /bin/bash, groups: [users],                keys: [diep.pub]}
-  - {name: gareth,      shell: /bin/zsh,  groups: [sudo, adm, users],     keys: [gareth.pub]}
+  - {name: gareth,      shell: /bin/fish, groups: [sudo, adm, users],     keys: [gareth.pub]}
   - {name: jjanes,      shell: /bin/bash, groups: [users],                keys: [jjanes.pub]}
   - {name: kevin,       shell: /bin/zsh,  groups: [sudo, adm, users, lt], keys: [kevin.pub]}
   - {name: lt,          shell: /bin/bash, groups: [users],                keys: [lt.pub, kevin.pub]}
