@@ -55,6 +55,15 @@
     owner=root
     mode=0644
 
+- name: Set up lmod system for ZSH
+  lineinfile:
+    line: "source {{item}}"
+    state: present
+    dest: /etc/zsh/zshenv
+  with_items:
+    - /etc/profile.d/lmod.sh
+    - /etc/profile.d/z00_StdEnv.sh
+
 - name: Copy StdEnv module definition
   template:
     src=templates/StdEnv.lua

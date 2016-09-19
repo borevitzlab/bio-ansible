@@ -23,6 +23,26 @@ append_path("PATH", path)
 prepend_path("PATH", path)
 {% endif %}
 
+{% if item.include_path is defined %}
+prepend_path("CPATH", pathJoin(base, "{{item.include_path}}"))
+prepend_path("C_INCLUDE_PATH", pathJoin(base, "{{item.include_path}}"))
+prepend_path("CPLUS_INCLUDE_PATH", pathJoin(base, "{{item.include_path}}"))
+{% endif %}
+
+{% if item.lib_path is defined %}
+prepend_path("LIBRARY_PATH", pathJoin(base, "{{item.lib_path}}"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(base, "{{item.lib_path}}"))
+prepend_path("LD_RUN_PATH", pathJoin(base, "{{item.lib_path}}"))
+{% endif %}
+
+{% if item.pkgconfig_path is defined %}
+prepend_path("PKG_CONFIG_PATH", pathJoin(base, "{{item.pkgconfig_path}}"))
+{% endif %}
+
+{% if item.man_path is defined %}
+prepend_path("MANPATH", pathJoin(base, "{{item.man_path}}"))
+{% endif %}
+
 {% if item.perl_path is defined %}
 prepend_path("PERL5LIB", pathJoin(base, "{{item.perl_path}}"))
 {% endif %}

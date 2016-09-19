@@ -5,6 +5,7 @@ packages_base:
   - emacs
   - etckeeper
   - fail2ban
+  - fish
   - ghostscript
   - git
   - glances

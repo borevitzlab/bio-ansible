@@ -3,7 +3,7 @@ shell=`basename $SHELL`
 if [ -f {{ soft_dir }}/lmod/lmod/init/$shell ]
 then
 
-    export PATH={{ soft_dir }}/lmod/lmod/libexec:$PATH
+    #export PATH={{ soft_dir }}/lmod/lmod/libexec:$PATH
     . {{ soft_dir }}/lmod/lmod/init/$shell
 
     for dir in `ls -1 {{ modules_dir }}| egrep -v '^all$' `

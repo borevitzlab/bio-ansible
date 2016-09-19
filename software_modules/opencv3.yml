@@ -1,0 +1,64 @@
+- name: Download opencv3
+  get_url:
+    url=https://github.com/opencv/opencv/archive/{{version}}.tar.gz
+    dest={{source_dir}}/opencv-{{version}}.tar.gz
+
+- name: Download opencv-contrib
+  get_url:
+    url=https://github.com/opencv/opencv_contrib/archive/{{version}}.tar.gz
+    dest={{source_dir}}/opencv_contrib-{{version}}.tar.gz
+
+- name: Uncompress Opencv
+  unarchive:
+    src: "{{ source_dir }}/opencv-{{version}}.tar.gz"
+    dest: "{{ source_dir }}"
+    copy: no
+    creates: "{{ source_dir }}/opencv-{{version}}/README.md"
+
+- name: Uncompress Opencv_contrib
+  unarchive:
+    src: "{{ source_dir }}/opencv_contrib-{{version}}.tar.gz"
+    dest: "{{ source_dir }}"
+    copy: no
+    creates: "{{ source_dir }}/opencv_contrib-{{version}}/README.md"
+
+- name: Download HDF5 patch
+  get_url:
+    url: https://github.com/opencv/opencv_contrib/commit/d766663add331bbec49f6dfbd5dee45966bbc34b.patch
+    dest: "{{source_dir}}/opencv_contrib-{{version}}/fix_hdf5.patch"
+
+- name: Apply HDF5 patch
+  patch:
+    src: "{{source_dir}}/opencv_contrib-{{version}}/fix_hdf5.patch"
+    basedir: "{{source_dir}}/opencv_contrib-{{version}}/"
+    strip: 1
+    remote_src: yes
+
+- name: Build and Install opencv3
+  shell: >
+    mkdir -p "{{soft_dir}}/opencv-{{version}}" &&
+    rm -rf /tmp/opencv_build && mkdir /tmp/opencv_build && cd /tmp/opencv_build &&
+    cmake "{{ source_dir }}/opencv-{{version}}/" -DCMAKE_INSTALL_PREFIX="{{soft_dir}}/opencv-{{version}}" -DBUILD_opencv_tracking=OFF \
+        -DOPENCV_EXTRA_MODULES_PATH="{{source_dir}}/opencv_contrib-{{version}}/modules" &&
+        make -j 8 all install &&
+    rm -rf /tmp/opencv_build
+  args:
+    creates: "{{soft_dir}}/opencv-{{version}}/include/opencv/cv.h"
+
+- file: dest="{{modules_dir}}/dev/opencv3" state=directory mode=0755
+
+- name: Opencv module definition
+  template:
+    src: templates/sw-module.lua.j2
+    dest: "{{ modules_dir }}/dev/opencv3/{{version}}.lua"
+    owner: root
+    mode: 0644
+  with_items:
+    - help_text: 'Open CV 3, including python2/3'
+      dir: 'opencv-{{version}}'
+      lib_path: lib
+      include_path: include
+      pkgconfig_path: lib/pkgconfig
+
+
+
