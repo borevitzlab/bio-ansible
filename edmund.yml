@@ -1,13 +1,13 @@
 - hosts: edmund.anu.edu.au
 
   vars_files:
-    - vars/apt_sources.yml
-    - vars/userlist.yml
-    - vars/pkgs_base.yml
-    - vars/pkgs_dev.yml
-    - vars/pkgs_bioinf.yml
-    - vars/python_pkgs.yml
-    - vars/std_modules.yml
+    - vars_edmund/apt_sources.yml
+    - vars_edmund/userlist.yml
+    - vars_edmund/pkgs_base.yml
+    - vars_edmund/pkgs_dev.yml
+    - vars_edmund/pkgs_bioinf.yml
+    - vars_edmund/python_pkgs.yml
+    - vars_edmund/std_modules.yml
 
   vars:
     - source_dir: /opt/source
