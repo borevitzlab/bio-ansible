@@ -1,0 +1,29 @@
+- hosts: traitcapture-vm
+
+  vars_files:
+    - vars_traitcapture/apt_sources.yml
+    - vars_traitcapture/userlist.yml
+    - vars_traitcapture/pkgs_base.yml
+    - vars_traitcapture/pkgs_dev.yml
+    - vars_traitcapture/pkgs_traitcapture.yml
+    - vars_traitcapture/python_pkgs.yml
+
+
+  tasks:
+    - include: tasks/updatepkgs.yml
+      tags: base
+    - include: tasks/installpkgs.yml suite="Base" pkgs="{{packages_base}}"
+      tags: base
+    - include: tasks/base_setup.yml
+      tags: base
+    - include: tasks/harden.yml
+      tags: base
+    - include: tasks/users.yml
+      tags: base
+
+    - include: tasks/installpkgs.yml suite="Development" pkgs="{{packages_dev}}"
+      tags: pkgs
+    - include: tasks/installpkgs.yml suite="Traitcapture" pkgs="{{packages_traitcapture}}"
+      tags: pkgs
+    - include: tasks/python_modules.yml modules="{{python_pkgs}}"
+      tags: pkgs

@@ -1,0 +1,6 @@
+users:
+  - {name: gareth,      shell: /usr/bin/fish, groups: [sudo, adm, users], keys: [gareth.pub]}
+  - {name: kevin,       shell: /bin/zsh,  groups: [sudo, adm, users],     keys: [kevin.pub]}
+  - {name: mohammad,    shell: /bin/bash, groups: [sudo, adm, users],     keys: [mohammad.pub]}
+  - {name: stnamin,     shell: /bin/bash, groups: [sudo, adm, users],     keys: [stnamin.pub]}
+  - {name: tim,         shell: /bin/bash, groups: [users],                keys: [timb.pub]}

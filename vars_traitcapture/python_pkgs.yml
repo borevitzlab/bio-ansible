@@ -1,0 +1,14 @@
+python_pkgs:
+  - {name: ExifRead,      pythons: [2   ]}
+  - {name: docopt,        pythons: [2, 3]}
+  - {name: jupyter,       pythons: [   3]}
+  - {name: notebook,      pythons: [   3]}
+  - {name: numpy,         pythons: [2, 3]}
+  - {name: pandas,        pythons: [2, 3]}
+  - {name: pillow,        pythons: [2, 3]}
+  - {name: pyyaml,        pythons: [2, 3]}
+  - {name: scikit-image,  pythons: [2, 3]}
+  - {name: scikit-learn,  pythons: [2, 3]}
+  - {name: scipy,         pythons: [2, 3]}
+  - {name: tables,        pythons: [2, 3]}
+  - {name: virtualenvwrapper, pythons: [2, 3]}
