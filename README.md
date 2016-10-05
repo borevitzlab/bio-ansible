@@ -16,4 +16,9 @@ You need `ansible` version 2.x installed locally
     - `/dev/vda1 /`
     * `/dev/vdb /tmp`
     * `/dev/vdc /home`
-- Run `ansible-playbook -i hosts edmund.yml```
+- Run `ansible-playbook -i hosts edmund.yml`
+
+## Traitcapture-VM
+
+- Build with 16.04 image with MOFED for infiniband
+- Run `ansible-playbook -i hosts traitcapture.yml`
