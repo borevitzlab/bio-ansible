@@ -15,3 +15,4 @@ users:
   - {name: stnamin,     shell: /bin/bash, groups: [sudo, adm, users],     keys: [stnamin.pub]}
   - {name: zara,        shell: /bin/bash, groups: [users],                keys: [zara.pub]}
   - {name: bethany.stone, shell: /bin/bash, groups: [users],              keys: [bethany.pub]}
+  - {name: darrenc,     shell: /bin/bash, groups: [users],                keys: [darrenc.pub]}
