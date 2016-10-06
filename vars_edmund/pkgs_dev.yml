@@ -31,6 +31,8 @@ packages_dev:
   - libsqlite3-dev
   - libssl-dev
   - libvtk6-dev
+  - libxml2-dev
+  - libxslt1-dev
   - libyaml-cpp-dev
   - libyaml-dev
   - libzmq3-dev
