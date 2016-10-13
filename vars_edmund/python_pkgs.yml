@@ -1,9 +1,11 @@
 python_pkgs:
   - {name: biopython,     pythons: [2, 3]}
   - {name: docopt,        pythons: [2, 3]}
+  - {name: ipython,       pythons: [2, 3]}
   - {name: jupyter,       pythons: [   3]}
-  - {name: notebook,      pythons: [   3]}
   - {name: khmer,         pythons: [   3]}
+  - {name: matplotlib,    pythons: [2, 3]}
+  - {name: notebook,      pythons: [   3]}
   - {name: numpy,         pythons: [2, 3]}
   - {name: pandas,        pythons: [2, 3]}
   - {name: pillow,        pythons: [2, 3]}

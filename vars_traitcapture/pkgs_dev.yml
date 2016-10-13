@@ -15,6 +15,7 @@ packages_dev:
   - libcurl4-openssl-dev
   - libeigen2-dev
   - libeigen3-dev
+  - libfreeimage-dev
   - libfreetype6-dev
   - libgdal-dev
   - libgoogle-glog-dev
@@ -30,6 +31,8 @@ packages_dev:
   - libsqlite3-dev
   - libssl-dev
   - libvtk6-dev
+  - libxml2-dev
+  - libxslt1-dev
   - libyaml-cpp-dev
   - libyaml-dev
   - libzmq3-dev
@@ -37,7 +40,9 @@ packages_dev:
   - python-all-dev
   - python-pip
   - python-sphinx
+  - python-tk
   - python3-all-dev
   - python3-pip
   - python3-sphinx
+  - python3-tk
   - zlib1g-dev
