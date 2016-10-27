@@ -1,9 +1,9 @@
 - hosts: traitcapture-vm
 
   vars_files:
+    - vars_base/pkgs_base.yml
     - vars_traitcapture/apt_sources.yml
     - vars_traitcapture/userlist.yml
-    - vars_traitcapture/pkgs_base.yml
     - vars_traitcapture/pkgs_dev.yml
     - vars_traitcapture/pkgs_traitcapture.yml
     - vars_traitcapture/python_pkgs.yml
@@ -27,3 +27,9 @@
       tags: pkgs
     - include: tasks/python_modules.yml modules="{{python_pkgs}}"
       tags: pkgs
+
+    - include: tasks/lmod.yml lmod_version=6.5.8
+      tags: modules
+
+    - include: software_modules/opencv3.yml version=master
+      tags: modules,opencv3

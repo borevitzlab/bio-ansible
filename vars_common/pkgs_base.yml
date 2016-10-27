@@ -1,5 +1,6 @@
 packages_base:
   - apache2
+  - cifs-utils
   - curl
   - default-jre-headless
   - emacs
