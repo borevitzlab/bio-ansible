@@ -70,4 +70,3 @@
     dest={{ modules_dir }}/core
     owner=root
     mode=0644
-

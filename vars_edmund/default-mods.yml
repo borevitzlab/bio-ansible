@@ -1,0 +1,9 @@
+default_modules:
+  - htslib
+  - samtools
+  - bcftools
+  - vcftools
+  - bwa
+  - bowtie2
+  - bowtie
+  - bedtools

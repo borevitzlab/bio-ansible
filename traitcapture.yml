@@ -1,12 +1,13 @@
 - hosts: traitcapture-vm
 
   vars_files:
-    - vars_base/pkgs_base.yml
+    - vars_common/pkgs_base.yml
     - vars_traitcapture/apt_sources.yml
     - vars_traitcapture/userlist.yml
     - vars_traitcapture/pkgs_dev.yml
     - vars_traitcapture/pkgs_traitcapture.yml
     - vars_traitcapture/python_pkgs.yml
+    - vars_traitcapture/default-mods.yml
 
 
   tasks:
