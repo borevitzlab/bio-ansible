@@ -1,6 +1,7 @@
 python_pkgs:
   - {name: biopython,     pythons: [2, 3]}
   - {name: docopt,        pythons: [2, 3]}
+  - {name: h5py,          pythons: [2, 3]}
   - {name: ipython,       pythons: [2, 3]}
   - {name: jupyter,       pythons: [   3]}
   - {name: khmer,         pythons: [   3]}

@@ -1,4 +1,5 @@
 users:
+  - {name: akanksha,    shell: /bin/bash, groups: [users],                keys: [akanksha.pub]}
   - {name: aaron,       shell: /bin/bash, groups: [users],                keys: [aaronsmith.pub]}
   - {name: borevitz,    shell: /bin/bash, groups: [users],                keys: []}
   - {name: brf,         shell: /bin/bash, groups: [users],                keys: [maxim-brf.pub]}
