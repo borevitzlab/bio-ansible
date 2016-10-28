@@ -36,6 +36,7 @@ packages_dev:
   - libyaml-cpp-dev
   - libyaml-dev
   - libzmq3-dev
+  - libzbar-dev
   - protobuf-compiler
   - python-all-dev
   - python-pip

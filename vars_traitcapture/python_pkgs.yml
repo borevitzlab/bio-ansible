@@ -14,3 +14,25 @@ python_pkgs:
   - {name: scipy,         pythons: [2, 3]}
   - {name: tables,        pythons: [2, 3]}
   - {name: virtualenvwrapper, pythons: [2, 3]}
+  - {name: zbar,          pythons: [2   ]}
+  - {name: qrtools,       pythons: [2, 3]}
+  - {name: pexif,       pythons: [2, 3]}
+  - {name: flask,         pythons: [   3]}
+  - {name: "requests[socks]",pythons: [   3]}
+  - {name: twilio,        pythons: [   3]}
+  - {name: Flask-Bcrypt,        pythons: [   3]}
+  - {name: cryptography,        pythons: [   3]}
+  - {name: WTForms,        pythons: [   3]}
+  - {name: Flask-Login,        pythons: [   3]}
+  - {name: pymongo,        pythons: [   3]}
+  - {name: mongoengine,        pythons: [   3]}
+  - {name: opbeat,        pythons: [   3]}
+  - {name: celery,        pythons: [   3]}
+  - {name: ImageHash,        pythons: [   3]}
+  - {name: imreg-dft,        pythons: [   3]}
+  - {name: psutil,        pythons: [   3]}
+  - {name: fuzzywuzzy,        pythons: [   3]}
+  - {name: stem,        pythons: [   3]}
+  - {name: slackclient,        pythons: [   3]}
+  - {name: python-bcrypt,        pythons: [   3]}
+  - {name: python-Levenshtein,        pythons: [   3]}

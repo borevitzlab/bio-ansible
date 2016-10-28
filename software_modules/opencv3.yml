@@ -2,32 +2,63 @@
   git:
     repo: https://github.com/opencv/opencv.git
     clone: yes
-    recusive: yes
     update: yes
+    force: yes
     version: "{{version}}"
-    dest "{{source_dir}}/opencv-{{version}}"
+    dest: "{{source_dir}}/opencv-{{version}}"
 
 - name: Download opencv-contrib
   git:
     repo: https://github.com/opencv/opencv_contrib.git
     clone: yes
-    recusive: yes
+    force: yes
     update: yes
     version: "{{version}}"
-    dest "{{source_dir}}/opencv_contrib-{{version}}"
+    dest: "{{source_dir}}/opencv_contrib-{{version}}"
+
+- name: Download HDF5 patch
+  get_url:
+    url: https://github.com/opencv/opencv_contrib/commit/d766663add331bbec49f6dfbd5dee45966bbc34b.patch
+    dest: "{{source_dir}}/opencv_contrib-{{version}}/fix_hdf5.patch"
+
+- name: Apply HDF5 patch
+  patch:
+    src: "{{source_dir}}/opencv_contrib-{{version}}/fix_hdf5.patch"
+    basedir: "{{source_dir}}/opencv_contrib-{{version}}/"
+    strip: 1
+    remote_src: yes
 
 - name: Build and Install opencv3
   shell: >
     mkdir -p "{{soft_dir}}/opencv-{{version}}" &&
-    rm -rf /tmp/opencv_build && mkdir /tmp/opencv_build && cd /tmp/opencv_build &&
-    cmake "{{ source_dir }}/opencv-{{version}}/" -DCMAKE_INSTALL_PREFIX="{{soft_dir}}/opencv-{{version}}" -DBUILD_opencv_tracking=OFF \
-        -DOPENCV_EXTRA_MODULES_PATH="{{source_dir}}/opencv_contrib-{{version}}/modules" &&
-        make -j 8 all install &&
-    rm -rf /tmp/opencv_build
+    rm -rf {{build_dir}}/opencv_build && mkdir {{build_dir}}/opencv_build && cd {{build_dir}}/opencv_build &&
+    cmake "{{ source_dir }}/opencv-{{version}}/" \
+      -DBUILD_opencv_tracking=OFF \
+      -DCMAKE_BUILD_TYPE=RELEASE \
+      -DCMAKE_INSTALL_PREFIX="{{soft_dir}}/opencv-{{version}}" \
+      -DBUILD_EXAMPLES=ON \
+      -DINSTALL_PYTHON_EXAMPLES=OFF \
+      -DINSTALL_C_EXAMPLES=OFF \
+      -DOPENCV_EXTRA_MODULES_PATH="{{source_dir}}/opencv_contrib-{{version}}/modules" &&
+    make -j 8 all install &&
+    rm -rf {{build_dir}}/opencv_build
   args:
     creates: "{{soft_dir}}/opencv-{{version}}/include/opencv/cv.h"
 
-- file: dest="{{modules_dir}}/dev/opencv3" state=directory mode=0755
+- copy:
+    remote_src: yes
+    src: "{{soft_dir}}/opencv-{{version}}/lib/python3.5/dist-packages/cv2.cpython-35m-x86_64-linux-gnu.so"
+    dest: "/usr/local/lib/python3.5/dist-packages"
+
+- copy:
+    remote_src: yes
+    src: "{{soft_dir}}/opencv-{{version}}/lib/python2.7/dist-packages/cv2.so"
+    dest: "/usr/local/lib/python2.7/dist-packages"
+
+- file:
+    dest: "{{modules_dir}}/dev/opencv3"
+    state: directory
+    mode: 0755
 
 - name: Opencv module definition
   template:
@@ -41,6 +72,4 @@
       lib_path: lib
       include_path: include
       pkgconfig_path: lib/pkgconfig
-
-
-
+      python_path: lib/python3.5/dist-packages
