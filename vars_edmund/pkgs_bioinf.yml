@@ -2,6 +2,7 @@ packages_bioinf:
   - fastqc
   - fastx-toolkit
   - julia
+  - igv
   - mafft
   - minia
   - mpi-default-bin
