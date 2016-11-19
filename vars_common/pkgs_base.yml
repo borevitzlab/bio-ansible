@@ -21,6 +21,8 @@ packages_base:
   - lua5.2
   - mailutils
   - mutt
+  - munin
+  - munin-node
   - nano
   - ncdu
   - nodejs-legacy

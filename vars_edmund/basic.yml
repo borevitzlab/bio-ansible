@@ -5,6 +5,7 @@ apache_sites:
     fqdn: edmund.anu.edu.au
     redir_https: true
     jupyterhub: true
+    munin: true
     documentrootdir: ""
 
 jupyterhub:
