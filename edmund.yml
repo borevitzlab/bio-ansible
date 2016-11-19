@@ -2,6 +2,7 @@
 
   vars_files:
     - vars_common/pkgs_base.yml
+    - vars_edmund/basic.yml
     - vars_edmund/apt_sources.yml
     - vars_edmund/userlist.yml
     - vars_edmund/pkgs_dev.yml
@@ -25,13 +26,18 @@
       tags: base
     - include: tasks/users.yml
       tags: base
-
     - include: tasks/installpkgs.yml suite="Development" pkgs="{{packages_dev}}" tags=apt
       tags: pkgs
     - include: tasks/installpkgs.yml suite="Bioinformatics" pkgs="{{packages_bioinf}}" tags=apt
       tags: pkgs
     - include: tasks/python_modules.yml modules="{{python_pkgs}}"
       tags: pkgs
+
+    - include: tasks/jupyterhub.yml
+      tags: web
+
+    - include: tasks/apache2.yml
+      tags: web
 
     - include: tasks/lmod.yml lmod_version=6.5.8
       tags: modules

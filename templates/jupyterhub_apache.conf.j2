@@ -1,0 +1,13 @@
+ProxyRequests off
+ProxyPreserveHost On
+
+
+<Location /{{item.webpath}}>
+  ProxyPass http://localhost:8000/{{item.webpath}}
+  ProxyPassReverse http://localhost:8000/{{item.webpath}}
+</Location>
+
+<LocationMatch "/{{item.webpath}}/(user/[^/]*)/(api/kernels/[^/]+/channels|terminals/websocket)(.*)">
+  ProxyPassMatch ws://localhost:8000/{{item.webpath}}/$1/$2$3
+  ProxyPassReverse ws://localhost:8000/{{item.webpath}}
+</LocationMatch>

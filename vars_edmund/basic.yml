@@ -1,0 +1,14 @@
+admin_email: kevin.murray@anu.edu.au
+
+apache_sites:
+  - name: default
+    fqdn: edmund.anu.edu.au
+    redir_https: true
+    jupyterhub: true
+    documentrootdir: ""
+
+jupyterhub:
+  - admins:
+      - kevin
+      - gareth
+    webpath: jh

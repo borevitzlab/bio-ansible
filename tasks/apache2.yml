@@ -1,0 +1,69 @@
+- name: "Install letsencrypt"
+  apt:
+    update_cache: yes
+    name: "{{ item }}"
+    state: latest
+  with_items:
+      - apache2
+      - letsencrypt
+      - python-letsencrypt-apache
+
+- name: "Ensure apache is running"
+  service:
+    name: apache2
+    state: started
+
+- name: "Open firewall ports"
+  ufw: rule={{item.state}} port={{item.port}} proto={{item.proto}}
+  with_items:
+    - {port: 80, proto: tcp, state: allow}
+    - {port: 443, proto: tcp, state: allow}
+
+- name: "Obtain and install letsencrypt cert using apache"
+  shell: >
+    letsencrypt --agree-tos --redirect --text --noninteractive      \
+       {% for srv in apache_sites %} -d {{ srv.fqdn }} {% endfor %} \
+       --email {{ admin_email }} --expand --apache certonly
+  args:
+    creates: "/etc/letsencrypt/live/{{ ansible_fqdn }}"
+
+- name: "Install LetsEncrypt renewal cron"
+  cron:
+    name: "LetsEncrypt Renewal"
+    day: "*/3"
+    hour: "4"
+    minute: "04"
+    job: "letsencrypt renew --apache"
+
+- name: "Enable userdir module"
+  apache2_module:
+    name: userdir
+    state: present
+
+- name: "Install apaches sites (http)"
+  template:
+    src: templates/apache2_srv.conf
+    dest: /etc/apache2/sites-available/{{ item.name }}.conf
+    owner: root
+    group: root
+    mode: 0644
+  with_items: "{{apache_sites}}"
+
+- name: "Install apaches sites (https)"
+  template:
+    src: templates/apache2_srv_tls.conf
+    dest: /etc/apache2/sites-available/{{ item.name }}_tls.conf
+    owner: root
+    group: root
+    mode: 0644
+  with_items: "{{apache_sites}}"
+
+- name: "Enable apaches sites"
+  shell: a2ensite {{item.name}} {{item.name}}_tls
+  with_items: "{{apache_sites}}"
+
+- name: "Ensure apache is restarted"
+  service:
+    name: apache2
+    state: restarted
+
