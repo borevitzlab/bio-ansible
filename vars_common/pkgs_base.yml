@@ -3,6 +3,7 @@ packages_base:
   - cifs-utils
   - curl
   - default-jre-headless
+  - duply
   - emacs
   - etckeeper
   - fail2ban
@@ -20,9 +21,9 @@ packages_base:
   - lua-posix
   - lua5.2
   - mailutils
-  - mutt
   - munin
   - munin-node
+  - mutt
   - nano
   - ncdu
   - nodejs-legacy
