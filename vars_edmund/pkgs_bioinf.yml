@@ -1,13 +1,15 @@
 packages_bioinf:
   - fastqc
   - fastx-toolkit
-  - julia
   - igv
+  - julia
   - mafft
   - minia
   - mpi-default-bin
   - mummer
   - muscle
+  - pandoc
+  - pandoc-citeproc
   - plast
   - r-base-core
   - scythe
