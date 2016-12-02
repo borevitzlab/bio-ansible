@@ -1,9 +1,15 @@
-Cufflinks: build from src
-bwa: use git or latest master
 
-Need keys from:
-- pip
-- justin
-- zara
-- mohammad
+# R
+
+Install a bunch of packages globally
+
+add following to /etc/R/Rprofile.site
+```
+local({
+ r <- getOption("repos")
+ r["CRAN"] <- "https://cran.ms.unimelb.edu.au/"
+ options(repos = r)
+})
+```
+
 
