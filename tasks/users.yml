@@ -17,3 +17,11 @@
     - "{{users}}"
     - keys
     - {skip_missing: True}
+
+- name: "Create /home/data directory for shared datasets"
+  file:
+    dest: "/home/data"
+    state: directory
+    mode: 02750
+    owner: root
+    group: users

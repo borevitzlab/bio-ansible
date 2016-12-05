@@ -25,7 +25,7 @@
     - include: tasks/harden.yml
       tags: base
     - include: tasks/users.yml
-      tags: base
+      tags: base,users
     - include: tasks/installpkgs.yml suite="Development" pkgs="{{packages_dev}}" tags=apt
       tags: pkgs
     - include: tasks/installpkgs.yml suite="Bioinformatics" pkgs="{{packages_bioinf}}" tags=apt
