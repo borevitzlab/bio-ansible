@@ -57,3 +57,5 @@
       tags: modules,vcftools
     - include: software_modules/bedtools.yml version=2.26.0
       tags: modules,bedtools
+    - include: software_modules/kraken.yml version=0.10.5-beta
+      tags: modules,kraken

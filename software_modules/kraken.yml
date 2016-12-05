@@ -1,0 +1,72 @@
+- name: Download Kraken
+  get_url:
+    url=https://github.com/DerrickWood/kraken/archive/v{{version}}.tar.gz
+    dest={{source_dir}}/kraken-{{version}}.tar.gz
+
+- name: Uncompress Kraken
+  unarchive:
+    src={{ source_dir }}/kraken-{{version}}.tar.gz
+    dest={{ source_dir }}
+    copy=no
+
+- name: Download Jellyfish 1.x
+  get_url:
+    url: http://www.cbcb.umd.edu/software/jellyfish/jellyfish-1.1.11.tar.gz
+    dest: "{{source_dir}}/kraken-{{version}}/jellyfish-1.1.11.tar.gz"
+
+- name: Uncompress Jellyfish 1.x
+  unarchive:
+    src: "{{source_dir}}/kraken-{{version}}/jellyfish-1.1.11.tar.gz"
+    dest: "{{ source_dir }}/kraken-{{version}}"
+    copy: no
+
+- name: Build and Install jellyfish
+  shell: >
+    cd {{ source_dir }}/kraken-{{version}}/jellyfish-1.1.11/;
+    ./configure --prefix "{{ soft_dir }}/kraken-{{version}}/" &&
+    make && make install
+  args:
+    creates: "{{ soft_dir }}/kraken-{{version}}/bin/jellyfish"
+
+- name: Build and Install Kraken
+  shell: >
+    cd {{ source_dir }}/kraken-{{version}};
+    CPATH="{{ soft_dir }}/kraken-{{version}}/include" \
+    LD_RUN_PATH="{{ soft_dir }}/kraken-{{version}}/lib" \
+    LD_LIBRARY_PATH="{{ soft_dir }}/kraken-{{version}}/lib" \
+    bash install_kraken.sh "{{ soft_dir }}/kraken-{{version}}/"
+  args:
+    creates: "{{ soft_dir }}/kraken-{{version}}/bin/kraken"
+
+- file:
+    src: "{{ soft_dir }}/kraken-{{version}}/{{item}}"
+    dest: "{{ soft_dir }}/kraken-{{version}}/bin/{{item}}"
+    state: link
+    force: yes
+  with_items:
+    - kraken
+    - kraken-build
+    - kraken-filter
+    - kraken-mpa-report
+    - kraken-report
+    - kraken-translate
+
+- name: Download and build standard kraken db
+  shell: >
+    PATH="{{ soft_dir }}/kraken-{{version}}/bin/:$PATH";
+    mkdir -p /home/data/kraken && cd /home/data/kraken &&
+    kraken-build --standard --db standard_db --threads 16
+  args:
+    creates: "/home/data/kraken/standard_db"
+
+- file: dest="{{modules_dir}}/bio/kraken" state=directory mode=0755
+
+- name: Kraken module definition
+  template:
+    src: templates/sw-module.lua.j2
+    dest: "{{ modules_dir }}/bio/kraken/{{version}}.lua"
+    owner: root
+    mode: 0644
+  with_items:
+    - help_text: 'This module loads the kraken taxonomic assignment tool'
+      dir: 'kraken-{{version}}'
