@@ -31,7 +31,7 @@
     - include: tasks/installpkgs.yml suite="Bioinformatics" pkgs="{{packages_bioinf}}" tags=apt
       tags: pkgs
     - include: tasks/python_modules.yml modules="{{python_pkgs}}"
-      tags: pkgs
+      tags: pkgs,python
 
     - include: tasks/jupyterhub.yml
       tags: web

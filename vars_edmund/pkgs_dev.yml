@@ -44,4 +44,5 @@ packages_dev:
   - python3-all-dev
   - python3-pip
   - python3-sphinx
+  - qemu
   - zlib1g-dev
