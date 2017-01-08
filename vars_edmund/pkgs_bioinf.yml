@@ -1,4 +1,5 @@
 packages_bioinf:
+  - axe-demultiplexer
   - fastqc
   - fastx-toolkit
   - igv
@@ -11,6 +12,7 @@ packages_bioinf:
   - pandoc
   - pandoc-citeproc
   - plast
+  - python-cutadapt
   - r-base-core
   - scythe
   - seq-gen
