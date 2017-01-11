@@ -3,7 +3,7 @@ users:
   - {name: aaron,           shell: /bin/bash,       groups: [users],                        keys: [aaronsmith.pub]}
   - {name: coast,           shell: /bin/bash,       groups: [users],                        keys: [coast.pub]}
   - {name: yfcaroline,      shell: /bin/bash,       groups: [users],                        keys: [yfcaroline.pub]}
-  - {name: borevitz,        shell: /bin/bash,       groups: [users],                        keys: []}
+  - {name: borevitz,        shell: /bin/bash,       groups: [users],                        keys: [borevitz.pub]}
   - {name: brf,             shell: /bin/bash,       groups: [users],                        keys: [maxim-brf.pub]}
   - {name: diep,            shell: /bin/bash,       groups: [users],                        keys: [diep.pub]}
   - {name: gareth,          shell: /usr/bin/fish,   groups: [sudo, adm, users],             keys: [gareth.pub]}
