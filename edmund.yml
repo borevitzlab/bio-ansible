@@ -59,3 +59,5 @@
       tags: modules,bedtools
     - include: software_modules/kraken.yml version=0.10.5-beta
       tags: modules,kraken
+    - include: software_modules/adapterremoval.yml version=2.2.0
+      tags: modules,adapterremoval

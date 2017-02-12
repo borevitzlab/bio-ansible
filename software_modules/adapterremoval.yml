@@ -1,0 +1,34 @@
+- name: Download AdapterRemoval
+  get_url:
+    url: "https://github.com/MikkelSchubert/adapterremoval/archive/v{{version}}.tar.gz"
+    dest: "{{source_dir}}/adapterremoval-{{version}}.tar.gz"
+
+- name: Uncompress AdapterRemoval
+  unarchive:
+    src: "{{source_dir}}/adapterremoval-{{version}}.tar.gz"
+    dest: "{{source_dir}}"
+    copy: no
+    creates: "{{source_dir}}/adapterremoval-{{version}}/Makefile"
+
+- name: Build and Install adapterremoval
+  shell: >
+    cd {{source_dir}}/adapterremoval-{{version}} &&
+    make &&
+    make install PREFIX="{{ soft_dir }}/adapterremoval-{{version}}"
+  args:
+    creates: "{{ soft_dir }}/adapterremoval-{{version}}/bin/adapterremoval"
+
+- file:
+    dest: "{{modules_dir}}/bio/adapterremoval"
+    state: directory
+    mode: 0755
+
+- name: adapterremoval module definition
+  template:
+    src: templates/sw-module.lua.j2
+    dest: "{{ modules_dir }}/bio/adapterremoval/{{version}}.lua"
+    owner: root
+    mode: 0644
+  with_items:
+    - { help_text: 'rapid adapter trimming, identification, and read merging',
+        dir: 'adapterremoval-{{version}}' }
