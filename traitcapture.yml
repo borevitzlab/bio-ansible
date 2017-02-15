@@ -20,7 +20,7 @@
     - include: tasks/harden.yml
       tags: base
     - include: tasks/users.yml
-      tags: base
+      tags: base,users
 
     - include: tasks/installpkgs.yml suite="Development" pkgs="{{packages_dev}}"
       tags: pkgs
