@@ -12,11 +12,11 @@
 
   tasks:
     - include: tasks/updatepkgs.yml
-      tags: base
+      tags: base,update
     - include: tasks/installpkgs.yml suite="Base" pkgs="{{packages_base}}"
       tags: base
     - include: tasks/base_setup.yml
-      tags: base
+      tags: base,setup
     - include: tasks/harden.yml
       tags: base
     - include: tasks/users.yml
@@ -27,7 +27,7 @@
     - include: tasks/installpkgs.yml suite="Traitcapture" pkgs="{{packages_traitcapture}}"
       tags: pkgs
     - include: tasks/python_modules.yml modules="{{python_pkgs}}"
-      tags: pkgs
+      tags: pkgs,python
 
     - include: tasks/lmod.yml lmod_version=6.5.8
       tags: modules
