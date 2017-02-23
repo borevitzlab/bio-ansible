@@ -51,13 +51,13 @@
     - kraken-report
     - kraken-translate
 
-- name: Download and build standard kraken db
-  shell: >
-    PATH="{{ soft_dir }}/kraken-{{version}}/bin/:$PATH";
-    mkdir -p /home/data/kraken && cd /home/data/kraken &&
-    kraken-build --standard --db standard_db --threads 16
-  args:
-    creates: "/home/data/kraken/standard_db"
+#- name: Download and build standard kraken db
+#  shell: >
+#    PATH="{{ soft_dir }}/kraken-{{version}}/bin/:$PATH";
+#    mkdir -p /home/data/kraken && cd /home/data/kraken &&
+#    kraken-build --standard --db standard_db --threads 16
+#  args:
+#    creates: "/home/data/kraken/standard_db"
 
 - file: dest="{{modules_dir}}/bio/kraken" state=directory mode=0755
 
