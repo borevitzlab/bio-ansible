@@ -1,10 +1,13 @@
 - name: Add apt sources
   apt_repository: repo={{item}} state=present
-  with_items:
-    - "{{apt_sources}}"
+  with_items: "{{apt_sources}}"
 
-- name: Add CRAN apt key
-  apt_key: keyserver=keyserver.ubuntu.com id=E298A3A825C0D65DFD57CBB651716619E084DAB9
+- name: Add apt keys
+  apt_key:
+    url: "{{item.url|default(omit)}}"
+    id: "{{item.id|default(omit)}}"
+    keyserver: "{{item.keyserver|default(omit)}}"
+  with_items: "{{apt_keys}}"
 
 - name: Set up apt updates
   lineinfile:
