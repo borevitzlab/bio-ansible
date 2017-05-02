@@ -42,7 +42,7 @@
     state: present
   with_items:
     - userdir
-    - cgi
+    # - cgi #seems to error
     - authnz_pam
 
 - name: "Install apaches sites (http)"

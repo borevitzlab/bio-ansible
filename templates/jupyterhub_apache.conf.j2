@@ -2,6 +2,9 @@ ProxyRequests off
 ProxyPreserveHost On
 
 
+Redirect /jupyter "/jh/hub/"
+Redirect /jupyterhub "/jh/hub/"
+
 <Location /{{item.webpath}}>
   ProxyPass http://localhost:8000/{{item.webpath}}
   ProxyPassReverse http://localhost:8000/{{item.webpath}}

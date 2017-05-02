@@ -20,3 +20,4 @@ users:
   - {name: zara,            shell: /bin/bash,       groups: [users],                        keys: [zara.pub]}
   - {name: bethany.stone,   shell: /bin/bash,       groups: [users],                        keys: [bethany.pub]}
   - {name: darrenc,         shell: /bin/bash,       groups: [users],                        keys: [darrenc.pub]}
+  - {name: biol3161,        shell: /bin/bash,       groups: [],                             keys: []}

@@ -4,11 +4,11 @@
     executable: pip3
     state: latest
 
-- name: "Install JH npm deps"
-  npm:
-    name: configurable-http-proxy
-    global: true
-    state: latest
+  #- name: "Install JH npm deps"
+  #  npm:
+  #    name: configurable-http-proxy
+  #    global: true
+  #    state: latest
 
 - name: "Install Jupyterhub config"
   template:
