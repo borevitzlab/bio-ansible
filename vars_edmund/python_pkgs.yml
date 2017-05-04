@@ -1,5 +1,6 @@
 python_pkgs:
   - {name: biopython,         pythons: [2, 3]}
+  - {name: boto,              pythons: [2, 3]}
   - {name: docopt,            pythons: [2, 3]}
   - {name: gffutils,          pythons: [   3]}
   - {name: h5py,              pythons: [2, 3]}
@@ -14,6 +15,7 @@ python_pkgs:
   - {name: pillow,            pythons: [2, 3]}
   - {name: pysam,             pythons: [   3]}
   - {name: pyyaml,            pythons: [2, 3]}
+  - {name: rpy2,              pythons: [2, 3]}
   - {name: scikit-bio,        pythons: [   3]}
   - {name: scikit-image,      pythons: [2, 3]}
   - {name: scikit-learn,      pythons: [2, 3]}
