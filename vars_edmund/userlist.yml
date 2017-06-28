@@ -21,3 +21,4 @@ users:
   - {name: bethany.stone,   shell: /bin/bash,       groups: [users],                        keys: [bethany.pub]}
   - {name: darrenc,         shell: /bin/bash,       groups: [users],                        keys: [darrenc.pub]}
   - {name: biol3161,        shell: /bin/bash,       groups: [],                             keys: []}
+  - {name: u5548387,        shell: /bin/bash,       groups: [users],                        keys: [andrew-alimonte.pub]}
